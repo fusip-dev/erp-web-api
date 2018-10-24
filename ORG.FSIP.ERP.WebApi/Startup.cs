@@ -6,12 +6,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using ORG.FSIP.ERP.WebApi.Extensions;
 using ORG.FSIP.ERP.WebApi.Services;
+using PartialResponse.AspNetCore.Mvc;
+using PartialResponse.Extensions.DependencyInjection;
 
 namespace ORG.FSIP.ERP.WebApi
 {
@@ -29,9 +34,18 @@ namespace ORG.FSIP.ERP.WebApi
         {
             services.AddSingleton<IModuleService, ModuleService>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
             services.AddApiVersioning();
+
+            services.AddMvc(options => options.OutputFormatters.RemoveType<JsonOutputFormatter>())
+                .AddPartialJsonFormatters(options => {
+                    options.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.NullValueHandling = NullValueHandling.Ignore;
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.Configure<MvcPartialJsonOptions>(options => options.IgnoreCase = true);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
