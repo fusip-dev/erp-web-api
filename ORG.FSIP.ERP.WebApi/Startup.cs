@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using ORG.FSIP.ERP.WebApi.Extensions;
 using ORG.FSIP.ERP.WebApi.Services;
 
 namespace ORG.FSIP.ERP.WebApi
@@ -46,6 +47,9 @@ namespace ORG.FSIP.ERP.WebApi
             }
 
             app.UseHttpsRedirection();
+
+            app.UseApiResponseWrapper();
+
             app.UseMvc();
         }
     }
