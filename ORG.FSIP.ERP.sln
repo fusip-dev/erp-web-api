@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HumanResources", "HumanReso
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{ADE2CBC8-79EA-4DC1-AD57-1792BAEBD871}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ORG.FSIP.ERP.Libraries.Reflection", "ORG.FSIP.ERP.Libraries.Reflection\ORG.FSIP.ERP.Libraries.Reflection.csproj", "{BBF506A0-CA31-4398-BF23-A8F40FDF18BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{7D26F41A-7D68-4947-A5E8-A5FBAD4A9E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D26F41A-7D68-4947-A5E8-A5FBAD4A9E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D26F41A-7D68-4947-A5E8-A5FBAD4A9E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBF506A0-CA31-4398-BF23-A8F40FDF18BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBF506A0-CA31-4398-BF23-A8F40FDF18BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF506A0-CA31-4398-BF23-A8F40FDF18BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF506A0-CA31-4398-BF23-A8F40FDF18BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 		{948C569B-DFBC-4084-A32A-D81D3B6C958F} = {9399F923-2F11-4042-930D-481CBE12949F}
 		{893F1FAC-1BFC-4418-AD20-45B520A84F92} = {9399F923-2F11-4042-930D-481CBE12949F}
 		{ADE2CBC8-79EA-4DC1-AD57-1792BAEBD871} = {9399F923-2F11-4042-930D-481CBE12949F}
+		{BBF506A0-CA31-4398-BF23-A8F40FDF18BD} = {DFF229CA-66FB-4484-9962-D9FE52639E27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E2B7200-4967-4D15-899C-43BF591401A0}
