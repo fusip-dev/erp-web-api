@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using ORG.FSIP.ERP.Core.DAL.Providers.SqlServer.Extensions.DependencyInjection;
 using ORG.FSIP.ERP.WebApi.Extensions;
 using ORG.FSIP.ERP.WebApi.Services;
 using PartialResponse.AspNetCore.Mvc;
@@ -45,6 +46,7 @@ namespace ORG.FSIP.ERP.WebApi
 
             services.Configure<MvcPartialJsonOptions>(options => options.IgnoreCase = true);
 
+            services.AddSqlServerDataProviderForCore(Configuration.GetConnectionString("DataBaseConnection"));
 
         }
 

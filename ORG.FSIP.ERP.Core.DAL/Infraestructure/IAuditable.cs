@@ -8,10 +8,10 @@ namespace ORG.FSIP.ERP.Core.DAL.Infraestructure
     {
         DateTime Created { get; set; }
 
-        string CreatedBy { get; set; }
+        Guid CreatedBy { get; set; }
 
         DateTime Modified { get; set; }
 
-        string ModifiedBy { get; set; }
+        Guid ModifiedBy { get; set; }
     }
 }
