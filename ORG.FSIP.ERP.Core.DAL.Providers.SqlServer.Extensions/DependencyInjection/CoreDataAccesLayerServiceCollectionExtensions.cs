@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using ORG.FSIP.ERP.Core.DAL.Entities;
+using ORG.FSIP.ERP.Core.DAL.Generic;
+using ORG.FSIP.ERP.Core.DAL.Infraestructure;
 using System;
 
 namespace ORG.FSIP.ERP.Core.DAL.Providers.SqlServer.Extensions.DependencyInjection
@@ -14,6 +17,10 @@ namespace ORG.FSIP.ERP.Core.DAL.Providers.SqlServer.Extensions.DependencyInjecti
             services.AddDbContext<CoreDataContext>(options => options.UseSqlServer(stringConnection));
 
             services.AddScoped<DbContext, CoreDataContext>();
+
+            services.AddSingleton<IGenericRepository<CoreDataContext, Headquarter>, GenericRepository<CoreDataContext, Headquarter>>();
+            services.AddSingleton<IGenericRepository<CoreDataContext, Module>, GenericRepository<CoreDataContext, Module>>();
+            services.AddSingleton<IGenericRepository<CoreDataContext, Season>, GenericRepository<CoreDataContext, Season>>();
 
             return services;
 
