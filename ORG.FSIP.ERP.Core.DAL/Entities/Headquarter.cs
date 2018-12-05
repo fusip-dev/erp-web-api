@@ -1,4 +1,5 @@
 ﻿using ORG.FSIP.ERP.Core.DAL.Generic;
+using ORG.FSIP.ERP.Core.DAL.Infraestructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,17 +7,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ORG.FSIP.ERP.Core.DAL.Entities
 {
-    [Table("Headquarters", Schema = "dbo")]
-    public class Headquarter: Entity
+    [Table("Headquarters")]
+    public class Headquarter: Entity, IAuditable
     {
         [Required, MaxLength(100)]
         public string HeadquarterName { get; set; }
 
-        [Required, MaxLength(20)]
+        [Required, MaxLength(50)]
         public string HeadquarterCity { get; set; }
 
-        [MaxLength(255)]
-        public string HeadquarterAddress { get; set; }
+        [Required, MaxLength(255)]
+        [Column(Order = 3)]
+        public string HeadquarterMainAddress { get; set; }
 
         [Required, MaxLength(10)]
         public string HeadquarterCode { get; set; }
@@ -24,6 +26,7 @@ namespace ORG.FSIP.ERP.Core.DAL.Entities
         [Required, MaxLength(15)]
         public string Acronym { get; set; }
 
+        [Required]
         public byte Order { get; set; }
 
         public virtual Headquarter ParentHeadquarter { get; set; }
@@ -32,6 +35,16 @@ namespace ORG.FSIP.ERP.Core.DAL.Entities
 
         public virtual ICollection<HeadquarterInformation> HeadquarterInformation { get; set; } = new HashSet<HeadquarterInformation>();
 
-        public virtual ICollection<SeasonState> SeasonStatus { get; set; } = new HashSet<SeasonState>();
+        public virtual ICollection<PeriodState> PeriodStatus { get; set; } = new HashSet<PeriodState>();
+
+        #region IAuditable
+        public DateTime Created { get; set; }
+
+        public Guid CreatedBy { get; set; }
+
+        public DateTime Modified { get; set; }
+
+        public Guid ModifiedBy { get; set; }
+        #endregion
     }
 }

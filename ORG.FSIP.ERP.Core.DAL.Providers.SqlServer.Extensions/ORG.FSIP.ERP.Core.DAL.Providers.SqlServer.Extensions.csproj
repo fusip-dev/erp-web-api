@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ORG.FSIP.ERP.Core.DAL.Providers.SqlServer\ORG.FSIP.ERP.Core.DAL.Providers.SqlServer.csproj" />
+    <ProjectReference Include="..\ORG.FSIP.ERP.Core.DAL\ORG.FSIP.ERP.Core.DAL.csproj" />
   </ItemGroup>
 
 </Project>

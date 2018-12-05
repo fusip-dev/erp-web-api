@@ -18,9 +18,9 @@ namespace ORG.FSIP.ERP.Core.DAL.Providers.SqlServer.Extensions.DependencyInjecti
 
             services.AddScoped<DbContext, CoreDataContext>();
 
-            services.AddSingleton<IGenericRepository<CoreDataContext, Headquarter>, GenericRepository<CoreDataContext, Headquarter>>();
-            services.AddSingleton<IGenericRepository<CoreDataContext, Module>, GenericRepository<CoreDataContext, Module>>();
-            services.AddSingleton<IGenericRepository<CoreDataContext, Season>, GenericRepository<CoreDataContext, Season>>();
+            services.AddScoped<IRepository<CoreDataContext, Headquarter>, Repository<CoreDataContext, Headquarter>>();
+            services.AddScoped<IRepository<CoreDataContext, Module>, Repository<CoreDataContext, Module>>();
+            services.AddScoped<IRepository<CoreDataContext, Period>, Repository<CoreDataContext, Period>>();
 
             return services;
 

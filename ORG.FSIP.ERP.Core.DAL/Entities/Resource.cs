@@ -1,16 +1,15 @@
 ﻿using ORG.FSIP.ERP.Core.DAL.Generic;
+using ORG.FSIP.ERP.Core.DAL.Infraestructure;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace ORG.FSIP.ERP.Core.DAL.Entities
 {
-    [Table("Resources", Schema = "dbo")]
-    public class Resource : Entity
+    [Table("Resources")]
+    public class Resource: Entity, IAuditable
     {
-        [Required, MaxLength(255)]
+        [Required, MaxLength(50)]
         public string Entity { get; set; }
 
         [Required]
@@ -21,5 +20,16 @@ namespace ORG.FSIP.ERP.Core.DAL.Entities
 
         [Required, MaxLength(255)]
         public string Path { get; set; }
+
+        #region IAuditable
+        public DateTime Created { get; set; }
+
+        public Guid CreatedBy { get; set; }
+
+        public DateTime Modified { get; set; }
+
+        public Guid ModifiedBy { get; set; }
+        #endregion
+
     }
 }

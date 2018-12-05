@@ -13,6 +13,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="20181105223959_InitializeCoreTables.cs" />
+    <Compile Remove="20181112194841_EntitiesRefactor.cs" />
+    <Compile Remove="20181112195421_EntitiesRefactor.cs" />
+    <Compile Remove="20181128210402_CoreEntitiesRefactor.cs" />
+    <Compile Remove="Migrations\20181126160551_RefactorEntities.cs" />
+    <Compile Remove="Migrations\20181128210402_CoreEntitiesRefactor.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4">
@@ -22,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ORG.FSIP.ERP.Core.DAL.Entities\ORG.FSIP.ERP.Core.DAL.Entities.csproj" />
     <ProjectReference Include="..\ORG.FSIP.ERP.Core.DAL\ORG.FSIP.ERP.Core.DAL.csproj" />
   </ItemGroup>
 

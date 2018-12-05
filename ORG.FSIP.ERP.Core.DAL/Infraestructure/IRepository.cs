@@ -1,13 +1,17 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ORG.FSIP.ERP.Core.DAL.Infraestructure
 {
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IRepository<TDbContext, TEntity>
+        where TDbContext : DbContext
+        where TEntity : IEntity
     {
+        TDbContext _context { get; }
+
         /// <summary>
         /// Gets a collection of all objects in the database
         /// </summary>

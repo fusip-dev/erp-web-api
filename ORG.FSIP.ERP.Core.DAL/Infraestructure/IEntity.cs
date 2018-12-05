@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ORG.FSIP.ERP.Core.DAL.Infraestructure
 {
-    public interface IEntity: IAuditable
+    public interface IEntity
     {
         Guid Id { get; set; }
 

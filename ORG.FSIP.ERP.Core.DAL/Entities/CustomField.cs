@@ -1,14 +1,14 @@
-﻿using ORG.FSIP.ERP.Core.DAL.Generic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using ORG.FSIP.ERP.Core.DAL.Generic;
+using ORG.FSIP.ERP.Core.DAL.Infraestructure;
 
 namespace ORG.FSIP.ERP.Core.DAL.Entities
 {
-    [Table("CustomFields", Schema = "dbo")]
-    public class CustomField: Entity
+    [Table("CustomFields")]
+    public class CustomField : Entity, IAuditable
     {
         [Required, MaxLength(100)]
         public string Entity { get; set; }
@@ -22,27 +22,31 @@ namespace ORG.FSIP.ERP.Core.DAL.Entities
         [Required, MaxLength(50)]
         public string CustomFieldType { get; set; }
 
-        [Column(TypeName = "text")]
         public string CustomFieldValidationRules { get; set; }
 
-        [Column(TypeName = "text")]
         public string CustomFieldDefaultValue { get; set; }
 
-        [Column(TypeName = "text")]
         public string CustomFieldValues { get; set; }
 
         [MaxLength(255)]
-        [Column(TypeName = "text")]
         public string CustomFieldDescription { get; set; }
 
         [Required]
         public byte Order { get; set; }
 
-        [InverseProperty("CustomFields")]
-        public CustomFieldGroup CustomFieldGroup { get; set; }
+        [Required]
+        public virtual CustomFieldGroup CustomFieldGroup { get; set; }
 
-        [InverseProperty("CustomField")]
-        public ICollection<HeadquarterInformation> HeadquarterAdditionalInformation { get; set; } = new HashSet<HeadquarterInformation>();
+        public virtual ICollection<HeadquarterInformation> HeadquarterAdditionalInformation { get; set; } = new HashSet<HeadquarterInformation>();
 
+        #region IAuditable
+        public DateTime Created { get; set; }
+
+        public Guid CreatedBy { get; set; }
+
+        public DateTime Modified { get; set; }
+
+        public Guid ModifiedBy { get; set; }
+        #endregion
     }
 }

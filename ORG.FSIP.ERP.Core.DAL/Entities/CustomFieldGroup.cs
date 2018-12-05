@@ -1,14 +1,14 @@
 ﻿using ORG.FSIP.ERP.Core.DAL.Generic;
+using ORG.FSIP.ERP.Core.DAL.Infraestructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace ORG.FSIP.ERP.Core.DAL.Entities
 {
-    [Table("CustomFieldGroups", Schema = "dbo")]
-    public class CustomFieldGroup:  Entity
+    [Table("CustomFieldGroups")]
+    public class CustomFieldGroup: Entity, IAuditable
     {
         [Required, MaxLength(100)]
         public string Entity { get; set; }
@@ -25,7 +25,16 @@ namespace ORG.FSIP.ERP.Core.DAL.Entities
         [Required]
         public byte Order { get; set; }
 
-        [InverseProperty("CustomFieldGroup")]
-        public virtual ICollection<CustomField> CustomFields { get; set; } =  new HashSet<CustomField>();
+        public virtual ICollection<CustomField> CustomFields { get; set; } = new HashSet<CustomField>();
+
+        #region IAuditable
+        public DateTime Created { get; set; }
+
+        public Guid CreatedBy { get; set; }
+
+        public DateTime Modified { get; set; }
+
+        public Guid ModifiedBy { get; set; }
+        #endregion
     }
 }

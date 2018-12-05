@@ -5,12 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ORG.FSIP.ERP.Core.DAL.Generic
 {
-    public class GenericRepository<TDbContext, TEntity> : IGenericRepository<TDbContext, TEntity>
+    public class Repository<TDbContext, TEntity> : IRepository<TDbContext, TEntity>
         where TDbContext : DbContext
         where TEntity : Entity
     {
@@ -18,7 +17,7 @@ namespace ORG.FSIP.ERP.Core.DAL.Generic
 
         private bool disposed = false;
 
-        public GenericRepository(TDbContext context)
+        public Repository(TDbContext context)
         {
             _context = context;
             _context.ChangeTracker.AutoDetectChangesEnabled = false;
@@ -31,7 +30,6 @@ namespace ORG.FSIP.ERP.Core.DAL.Generic
         /// <returns>An ICollection of every object in the database</returns>
         public virtual ICollection<TEntity> All()
         {
-
             return _context.Set<TEntity>().ToList();
         }
 
@@ -231,7 +229,7 @@ namespace ORG.FSIP.ERP.Core.DAL.Generic
         public virtual async Task<TEntity> UpdateAsync(TEntity updated, object key)
         {
             if (updated == null)
-                return null;
+                return default(TEntity);
 
             TEntity existing = await _context.Set<TEntity>().FindAsync(key);
             if (existing != null)
